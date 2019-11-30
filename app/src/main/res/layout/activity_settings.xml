@@ -7,190 +7,189 @@
     tools:context=".SettingsActivity">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="105dp"
-        android:layout_height="25dp"
-        android:text="Game Size :"
-        android:textSize="18dp"
+        android:id="@+id/tvHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/game_settings"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
-
-    <RadioGroup
-        android:id="@+id/rgTimer"
-        android:layout_width="140dp"
-        android:layout_height="26dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.327">
-
-        <RadioButton
-            android:id="@+id/rbon"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text=" ON" />
-
-        <RadioButton
-            android:id="@+id/rboff"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:text="OFF" />
-    </RadioGroup>
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="125dp"
-        android:layout_height="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.223" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="70dp"
-        android:layout_height="25dp"
-        android:text="Timer :"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.161"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.327" />
-
-    <RadioGroup
-        android:id="@+id/rgGameSize"
-        android:layout_width="110dp"
-        android:layout_height="26dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.161">
-
-        <RadioButton
-            android:id="@+id/rb1"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:text="4" />
-
-        <RadioButton
-            android:id="@+id/rb3"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="6" />
-
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="140dp"
-        android:layout_height="25dp"
-        android:text="Number Range :"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.199"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.277" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="120dp"
-        android:layout_height="25dp"
-        android:text="Starting Wait :"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.223" />
-
-    <EditText
-        android:id="@+id/txtrange"
-        android:layout_width="110dp"
-        android:layout_height="30dp"
-        android:ems="10"
-        android:hint="100-1000"
-        android:inputType="number"
-        android:numeric="integer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.619"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="120dp"
-        android:layout_height="25dp"
-        android:text="Game Settings"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.449"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="120dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        android:foreground="#141414"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.094" />
-
-    <Button
-        android:id="@+id/btnrtn"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvGameSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Return"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/game_size"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.445" />
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading" />
 
-    <Button
-        android:id="@+id/btnexit"
+    <RadioGroup
+        android:id="@+id/rgGameSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="E X I T"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/tvGameSize"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tvGameSize">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/gameSize4" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_weight="1"
+            android:enabled="true"
+            android:padding="10dp"
+            android:text="@string/gameSize6" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rgTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/tvTimer"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tvTimer"
+        app:layout_constraintVertical_bias="0.327">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbOn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:padding="10dp"
+            android:text="@string/on" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/off" />
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spWait"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tvWait"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tvWait" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/timer"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvRange"
+        app:layout_constraintTop_toBottomOf="@+id/tvRange" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvRange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/number_range"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvWait"
+        app:layout_constraintTop_toBottomOf="@+id/tvWait" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/starting_wait"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvGameSize"
+        app:layout_constraintTop_toBottomOf="@+id/tvGameSize" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etRangeStart"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_100"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/tvRange"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/tvRange"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/etRangeStart"
+        app:layout_constraintEnd_toStartOf="@+id/etRangeEnd"
+        app:layout_constraintStart_toEndOf="@+id/etRangeStart"
+        app:layout_constraintTop_toTopOf="@+id/etRangeStart" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etRangeEnd"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_999"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/etRangeStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/etRangeStart"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnExit"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.445" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTimer" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exit"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="174dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
