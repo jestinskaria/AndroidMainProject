@@ -41,9 +41,12 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
         setContentView(R.layout.activity_settings);
 
         type = getIntent().getIntExtra("type", 0);
+        timer = getIntent().getIntExtra("timer", 0);
 
         rangeStart = getIntent().getIntExtra("rangeStart", 0);
         rangeEnd = getIntent().getIntExtra("rangeEnd", 100);
+
+        initialDelay = getIntent().getIntExtra("initialDelay", 10000);
 
         initializeText();
         initializeSpinner();
@@ -52,10 +55,6 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
 
         findViewById(R.id.btnBack).setOnClickListener(this);
         findViewById(R.id.btnExit).setOnClickListener(this);
-    }
-
-    private void registerRadioButton() {
-
     }
 
     private void initializeText() {
@@ -70,22 +69,16 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
         rb4 = findViewById(R.id.rb4);
         rb6 = findViewById(R.id.rb6);
 
-        rb4.setOnCheckedChangeListener(this);
-        rb6.setOnCheckedChangeListener(this);
-
         rb4.setChecked(type == 1);
-        rb6.setChecked(type == 1);
+        rb6.setChecked(type == 0);
     }
 
     private void initializeTimer() {
         rbOn = findViewById(R.id.rbOn);
         rbOff = findViewById(R.id.rbOff);
 
-        rbOff.setOnCheckedChangeListener(this);
-        rbOn.setOnCheckedChangeListener(this);
-
-        rbOff.setChecked(timer == 1);
         rbOn.setChecked(timer == 1);
+        rbOff.setChecked(timer == 0);
     }
 
     private void initializeSpinner() {
@@ -104,6 +97,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
         categories.add("25 seconds");
         categories.add("30 seconds");
 
+        int position = (initialDelay / 1000) / 5;
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
@@ -112,6 +106,8 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
 
         // attaching value adapter to spinner
         spWait.setAdapter(dataAdapter);
+
+        spWait.setSelection(position - 1);
     }
 
     @Override
@@ -119,7 +115,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
         // On selecting a spinner item
         String item = parent.getItemAtPosition(position).toString();
 
-        initialDelay = (position + 1) * 5;
+        initialDelay = (position + 1) * 5 * 1000;
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
     }
@@ -139,8 +135,13 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
             AppCompatEditText etStart = findViewById(R.id.etRangeStart);
             AppCompatEditText etEnd = findViewById(R.id.etRangeEnd);
 
-            rangeStart = Integer.parseInt(etStart.getText().toString());
-            rangeEnd = Integer.parseInt(etEnd.getText().toString());
+            try {
+                rangeStart = Integer.parseInt(etStart.getText().toString());
+                rangeEnd = Integer.parseInt(etEnd.getText().toString());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
             type = rb4.isChecked() ? 1 : 0;
             timer = rbOn.isChecked() ? 1 : 0;

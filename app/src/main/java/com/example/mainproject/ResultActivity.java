@@ -18,7 +18,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
 
         int success = getIntent().getIntExtra("success", 0);
         int count = getIntent().getIntExtra("count", 0);
-        int time = getIntent().getIntExtra("time", 0);
+        String time = getIntent().getStringExtra("time");
 
         tvResult = findViewById(R.id.tvResult);
         tvTime = findViewById(R.id.tvTime);
@@ -37,7 +37,7 @@ public class ResultActivity extends AppCompatActivity implements View.OnClickLis
         if (v.getId() == R.id.btnNewGame) {
             startActivity(new Intent(this, GameActivity.class));
             finish();
-        }else {
+        } else {
             finish();
         }
     }

@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Chronometer;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,6 +55,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Group groupLeft;
 
     private AppCompatButton[] buttons;
+    private Chronometer cmTimer;
 
     private int searchingPosition = -1;
     private int currentPosition = -1;
@@ -61,8 +64,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isShowingError = false;
 
     private Timer lookupTimer;
-    private int elaspedTime = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initializeUi() {
+        cmTimer = findViewById(R.id.tvTimer);
+
         groupLeft = findViewById(R.id.grpLeft);
 
         btnStart = findViewById(R.id.btnStart);
@@ -143,6 +146,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void initializeListeners() {
+
+        cmTimer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+
+            }
+        });
         btnStart.setOnClickListener(this);
         btnExit.setOnClickListener(this);
         btnEnd.setOnClickListener(this);
@@ -275,6 +285,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                         isStarted = true;
                         setButtonVisibility(false);
                         notifyStarted();
+                        cmTimer.setBase(SystemClock.elapsedRealtime());
+                        cmTimer.start();
                     }
                 });
             }
@@ -289,29 +301,46 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             if (data != null) {
                 ((AppCompatButton) view).setText("" + data.value);
                 searchingPosition = data.associationPosition;
-                found.add((Integer) view.getTag());
+                found.add(data.position);
             }
             return;
         }
 
         if (searchingPosition == (Integer) view.getTag()) {
 
-            PositionData data = positionMap.get(((Integer) view.getTag()));
+            PositionData data = positionMap.get((view.getTag()));
             if (data != null) {
                 ((AppCompatButton) view).setText("" + data.value);
                 buttons[data.position].setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                 buttons[data.associationPosition].setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                 found.add(data.position);
-                found.add(data.associationPosition);
+                if (type == 1 && found.size() >= 16) {
+                    startResultActivity(1);
+                } else if (type == 0 && found.size() >= 36) {
+                    startResultActivity(1);
+                }
             }
             searchingPosition = -1;
             errorPosition = -1;
             currentPosition = -1;
         } else {
+            found.remove(found.size() - 1);
             currentPosition = (Integer) view.getTag();
             startTimerForLookup();
         }
+    }
+
+    private void startResultActivity(int i) {
+        cmTimer.stop();
+
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("time", cmTimer.getText());
+        intent.putExtra("success", i);
+        intent.putExtra("count", found.size() / 2);
+
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -352,21 +381,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         } else if (v.getId() == btnEnd.getId()) {
             // stop game and assign random
-
-
-            int success = buttons.length == found.size() ? 1 : 0;
-            Intent intent = new Intent(this, ResultActivity.class);
-            intent.putExtra("elapsedTime", elaspedTime);
-            intent.putExtra("success", success);
-            intent.putExtra("count", found.size() / 2);
-
-            startActivity(intent);
-            finish();
+            startResultActivity(0);
         } else if (v.getId() == btnSettings.getId()) {
             Intent intent = new Intent(this, SettingsActivity.class);
             intent.putExtra("type", type);
+            intent.putExtra("timer", timer);
             intent.putExtra("rangeStart", rangeStart);
             intent.putExtra("rangeEnd", rangeEnd);
+            intent.putExtra("initialDelay", initialDelay);
 
             startActivityForResult(intent, 101);
         } else if (v.getId() == btnExit.getId()) {
