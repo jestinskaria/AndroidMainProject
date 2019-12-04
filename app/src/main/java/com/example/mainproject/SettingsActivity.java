@@ -27,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity implements OnItemSelecte
     private RadioGroup rgSize, rgTimer;
     private AppCompatRadioButton rbOn, rbOff, rb4, rb6;
 
-    private int type = 0; //0 means 6 x 6 and 1 = 4 x 4  so default 6 x 6
+    private int type = 0; //0 means 6 x 6 and 1 = 4 x 4
     private int timer = 0;
     private int rangeStart = 0;
     private int rangeEnd = 100;

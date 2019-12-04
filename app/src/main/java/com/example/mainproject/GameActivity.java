@@ -25,7 +25,7 @@ import java.util.TimerTask;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private int type = 1; //0 means 6 x 6 and 1 = 4 x 4  so default 6 x 6
+    private int type = 1; //0 means 6 x 6 and 1 = 4 x 4
     private int timer = 1;
     private int rangeStart = 100;
     private int rangeEnd = 1000;
@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Map<Integer, PositionData> positionMap = new HashMap();
     private Map<Integer, Integer> positionMemory = new HashMap();
     private List<Integer> found = new ArrayList<>();
-    //Button Array, THis should be generated dynamically. But now there is no time, so hard coding this.
+
     private AppCompatButton
             btn00, btn01, btn02, btn03, btn04, btn05,
             btn10, btn11, btn12, btn13, btn14, btn15,
@@ -146,7 +146,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void initializeListeners() {
-
+      if(timer !=0)
         cmTimer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
@@ -241,6 +241,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             lookupTimer.cancel();
             lookupTimer = null;
         }
+
         lookupTimer = new Timer();
         lookupTimer.schedule(new TimerTask() {
             @Override
@@ -275,8 +276,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private void startTimerForInitialVisibility() {
         setButtonVisibility(true);
 
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        Timer times = new Timer();
+        times.schedule(new TimerTask() {
             @Override
             public void run() {
                 runOnUiThread(new Runnable() {
@@ -337,7 +338,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putExtra("time", cmTimer.getText());
         intent.putExtra("success", i);
-        intent.putExtra("count", found.size() / 2);
+        intent.putExtra("count", found.size());
 
         startActivity(intent);
         finish();
